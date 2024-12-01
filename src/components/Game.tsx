@@ -6,15 +6,15 @@ interface Props {
 }
 
 
-const Game:React.FC<Props> = ({game}) => {
+const Game:React.FC<Props> = ({game, homeTeam, awayTeam}) => {
 
   return (
     <div>  
         <p>{game.id}</p>
-        <p>{game.home_team.full_name}</p>
-        <p>{game.visitor_team.full_name}</p>
-        <p></p>
-        <p></p>
+        <p>{homeTeam.name}</p>
+        <p>{awayTeam.name}</p>
+        
+       
 
         
 
