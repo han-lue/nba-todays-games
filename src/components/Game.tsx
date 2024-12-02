@@ -1,23 +1,19 @@
 import { useEffect, useState } from 'react'
 import { GameType } from '../types/Game.type'
+import { TeamType } from '../types/Team.type'
 
 interface Props {
-    game: GameType
+    game: GameType,
 }
 
 
-const Game:React.FC<Props> = ({game, homeTeam, awayTeam}) => {
+const Game:React.FC<Props> = ({game}) => {
 
   return (
     <div>  
         <p>{game.id}</p>
-        <p>{homeTeam.name}</p>
-        <p>{awayTeam.name}</p>
-        
-       
-
-        
-
+        <p>{game.homeTeam.name}</p>
+        <p>{game.awayTeam.name}</p>
     </div>
   )
 }

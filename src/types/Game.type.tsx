@@ -5,4 +5,5 @@ export type GameType = {
     homeTeam: TeamType;
     awayTeam: TeamType;
     postSeason: boolean;
+    time: Date
 }
