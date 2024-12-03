@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { GameType } from '../types/Game.type'
-import { TeamType } from '../types/Team.type'
+
+import '../styles/Game.css'
 
 interface Props {
     game: GameType,
@@ -10,10 +11,17 @@ interface Props {
 const Game:React.FC<Props> = ({game}) => {
 
   return (
-    <div>  
-        <p>{game.id}</p>
+    <div className='game-container'>  
+      <div className='team-container'>
         <p>{game.homeTeam.name}</p>
-        <p>{game.awayTeam.name}</p>
+        <p>{game.homeTeam.abbreviation}</p>
+      </div>
+
+      <div className='team-container'>
+      <p>{game.awayTeam.name}</p>
+      <p>{game.awayTeam.abbreviation}</p>
+      </div>
+      
     </div>
   )
 }

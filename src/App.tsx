@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import './App.css'
+import './styles/App.css'
 
 import Game from "./components/Game"
 import { GameType } from './types/Game.type'
@@ -16,7 +16,6 @@ function App() {
     const date: Date = new Date() // Get todays date
     const todaysDate = date.toISOString().split('T')[0] // Convert the date into YYY-MM-DD format
 
-
     // Fetch todays games from the API
     fetch(apiGamesUrl + "/?dates[]=" + todaysDate, {
       method: 'GET',
@@ -31,7 +30,7 @@ function App() {
   console.log(games)
 
   return (
-    <>  
+    <div className='main-container'>  
       { games.length > 0 ? games.map((game: any) => <Game 
 
       game = {{
@@ -51,7 +50,7 @@ function App() {
         }
       }} 
       />) : ('loading')}
-    </>
+    </div>
   )
 }
 

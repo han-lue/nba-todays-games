@@ -1,0 +1,10 @@
+.main-container {
+    width: 100vw;
+    height: fit-content;
+    min-height: 100vh;
+    background-color: blueviolet;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    gap: 20px;
+}

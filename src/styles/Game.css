@@ -1,0 +1,14 @@
+.game-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.team-container {
+    display: flex;
+    flex-direction: column;
+}
