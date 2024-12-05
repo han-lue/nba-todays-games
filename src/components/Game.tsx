@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { GameType } from '../types/Game.type'
 
 import '../styles/Game.css'
+import logo from "../assets/logos/LAL.svg"
 
 interface Props {
     game: GameType,
@@ -14,6 +15,7 @@ const Game:React.FC<Props> = ({game}) => {
     <div className='game-container'>  
       <div className='team-container'>
         <p>{game.homeTeam.name}</p>
+        <img src={logo}/>
         <p>{game.homeTeam.abbreviation}</p>
       </div>
 
