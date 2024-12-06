@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react'
-import './styles/App.css'
+import '../styles/App.css'
 
-import Game from "./components/Game"
-import { GameType } from './types/Game.type'
+import Game from "../components/Game"
 
-function App() {
-
-
+function Games() {
   const [games, setGames] = useState([])
 
   const apiGamesUrl = import.meta.env.VITE_API_GAMES_URL
@@ -31,7 +28,9 @@ function App() {
 
   return (
     <div className='main-container'>  
-      { games.length > 0 ? games.map((game: any) => <Game 
+      
+      { 
+      games.length > 0 ? games.map((game: any) => <Game key={game.id}
 
       game = {{
         id: game.id,
@@ -48,10 +47,11 @@ function App() {
           abbreviation: game.visitor_team.abbreviation,
           conference: game.visitor_team.conference,
         }
-      }} 
-      />) : ('loading')}
+      }} />) 
+      : ('loading')
+      }
     </div>
   )
 }
 
-export default App
+export default Games
