@@ -28,28 +28,32 @@ function Games() {
 
   return (
     <div className='main-container'>  
-      
-      { 
-      games.length > 0 ? games.map((game: any) => <Game key={game.id}
+      <div className='grid-container'>
+        { 
+        games.length > 0 ? games.map((game: any) => 
+        
+        <Game key={game.id}
 
-      game = {{
-        id: game.id,
-        postSeason: game.postseason,
-        time: game.status,
-        homeTeam: {
-          id: game.home_team.id, 
-          name: game.home_team.full_name, 
-          abbreviation: game.home_team.abbreviation, 
-          conference: game.home_team.conference },
-        awayTeam: {
-          id: game.visitor_team.id,
-          name: game.visitor_team.full_name,
-          abbreviation: game.visitor_team.abbreviation,
-          conference: game.visitor_team.conference,
+        game = {{
+          id: game.id,
+          postSeason: game.postseason,
+          time: game.status,
+          homeTeam: {
+            id: game.home_team.id, 
+            name: game.home_team.full_name, 
+            abbreviation: game.home_team.abbreviation, 
+            conference: game.home_team.conference },
+          awayTeam: {
+            id: game.visitor_team.id,
+            name: game.visitor_team.full_name,
+            abbreviation: game.visitor_team.abbreviation,
+            conference: game.visitor_team.conference,
+          }
+        }} />) 
+        
+        : ('loading')
         }
-      }} />) 
-      : ('loading')
-      }
+      </div>
     </div>
   )
 }

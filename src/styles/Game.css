@@ -1,11 +1,16 @@
 .game-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 10px;
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 20px;
-    width: fit-content;
-    height: fit-content;
+    justify-content: center;
+    justify-items: center;
+}
+
+.test {
+    display: flex;
+    flex-direction: row;
 }
 
 .team-container {
