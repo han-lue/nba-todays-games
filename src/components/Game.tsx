@@ -22,18 +22,26 @@ const Game:React.FC<Props> = ({game}) => {
 
   return (
     <div className='game-container'>  
-      <p>{fullDate}</p>
-      <p>{localTime}</p>
-    
-      <div className='test'>
-        <div className='team-container'>
-          <p>{game.homeTeam.name}</p>
-            <img height="40" src={`./src/assets/logos/${game.homeTeam.abbreviation}.svg`} alt="Home team NBA logo"/>
-        </div>
+      
 
-        <div className='team-container'>
-          <p>{game.awayTeam.name}</p>
-            <img height="40" src={`./src/assets/logos/${game.awayTeam.abbreviation}.svg`} alt="Home team NBA logo"/>
+      <div className='team-left-container'>
+        <p>{game.homeTeam.name}</p>
+        <div className='image-container'>
+          <img src={`./src/assets/logos/${game.homeTeam.abbreviation}.png`} alt="Home team NBA logo"/>
+        </div>
+      </div>
+
+
+      <div className='date-time-container'>
+        <p className='time-text'>{localTime}</p>
+        <p className='date-text'>{fullDate}</p>
+      </div>
+
+
+      <div className='team-right-container'>
+        <p>{game.awayTeam.name}</p>
+        <div className='image-container'>
+          <img src={`./src/assets/logos/${game.awayTeam.abbreviation}.png`} alt="Away team NBA logo"/>
         </div>
       </div>
       
