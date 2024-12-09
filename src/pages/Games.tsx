@@ -9,6 +9,7 @@ function Games() {
   const apiGamesUrl = import.meta.env.VITE_API_GAMES_URL
   const apiKey = import.meta.env.VITE_API_KEY
 
+  /*
   useEffect(() => {
     const date: Date = new Date() // Get todays date
     const todaysDate = date.toISOString().split('T')[0] // Convert the date into YYY-MM-DD format
@@ -20,6 +21,21 @@ function Games() {
     })
     .then(response => response.json())
     .then(response => setGames(response.data. slice()))
+    .catch(error => console.error(error));
+     
+  }, []) */
+
+
+  //test with random date
+  useEffect(() => {
+
+    // Fetch todays games from the API
+    fetch(apiGamesUrl + "/?dates[]=2024-12-13", {
+      method: 'GET',
+      headers: { "Authorization" : apiKey }
+    })
+    .then(response => response.json())
+    .then(response => setGames(response.data.slice()))
     .catch(error => console.error(error));
      
   }, [])

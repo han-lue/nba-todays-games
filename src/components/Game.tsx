@@ -9,25 +9,40 @@ interface Props {
 
 const Game:React.FC<Props> = ({game}) => {
 
+  let fullDate:string = "";
+  let localTime:string = "";
 
-  const gameDate = new Date(game.time); 
+  console.log(game.time);
 
-  console.log(gameDate) 
+  if (game.time === "1st Qtr" ||
+      game.time === "2nd Qtr" ||
+      game.time === "Halftime" ||
+      game.time === "3rd Qtr" ||
+      game.time === "4th Qtr" ||
+      game.time === "Final") {
+    localTime = game.time;
+  
+  } else {
+    const gameDate = new Date(game.time); 
 
-  const fullDate = gameDate.getDate().toString() + "-" + (gameDate.getMonth() + 1).toString() + "-" + gameDate.getFullYear().toString()
-  console.log(fullDate)
+    console.log(gameDate) 
 
-  const localTime = ("0" + gameDate.getHours().toString()).slice(-2) + ":" + ("0" + gameDate.getMinutes().toString()).slice(-2)
-  console.log(localTime)
+    fullDate = gameDate.getDate().toString() + "-" + (gameDate.getMonth() + 1).toString() + "-" + gameDate.getFullYear().toString()
+    console.log(fullDate)
+
+    localTime = ("0" + gameDate.getHours().toString()).slice(-2) + ":" + ("0" + gameDate.getMinutes().toString()).slice(-2)
+    console.log(localTime)
+
+  }
+  
 
   return (
     <div className='game-container'>  
-      
 
       <div className='team-left-container'>
         <p>{game.homeTeam.name}</p>
         <div className='image-container'>
-          <img src={`./src/assets/logos/${game.homeTeam.abbreviation}.png`} alt="Home team NBA logo"/>
+          <img src={`./src/assets/logos/${game.homeTeam.abbreviation}.svg`} alt="Home team NBA logo"/>
         </div>
       </div>
 
@@ -41,7 +56,7 @@ const Game:React.FC<Props> = ({game}) => {
       <div className='team-right-container'>
         <p>{game.awayTeam.name}</p>
         <div className='image-container'>
-          <img src={`./src/assets/logos/${game.awayTeam.abbreviation}.png`} alt="Away team NBA logo"/>
+          <img src={`./src/assets/logos/${game.awayTeam.abbreviation}.svg`} alt="Away team NBA logo"/>
         </div>
       </div>
       
