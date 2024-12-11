@@ -6,6 +6,9 @@ import dayjs, { Dayjs } from 'dayjs'
 import customParseFormat from "dayjs/plugin/customParseFormat.js";
 dayjs.extend(customParseFormat);
 
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+
 
 import '../styles/Games.css'
 
@@ -78,11 +81,19 @@ function Games() {
           <div className='grid-container'>
             { 
 
-            games === null ? ("loading") : 
+            games === null 
+            ? 
+            <Box sx={{ display: 'flex', justifySelf: "center" }}>
+              <CircularProgress />
+            </Box>
+            : 
             
-            games.length === 0 ? ("no games today") :
+            games.length === 0 
+            ?
+             <p className='no-games-text'>There are no games today</p>
+            :
 
-            
+
             games.map((game: any) => 
             
             <Game key={game.id}

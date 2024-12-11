@@ -14,15 +14,14 @@ const Game:React.FC<Props> = ({game}) => {
   let inProcess: boolean;
 
   if (game.time === "1st Qtr" ||
-      game.time === "2nd Qtr" ||
-      game.time === "Halftime" ||
-      game.time === "3rd Qtr" ||
-      game.time === "4th Qtr" ||
-      game.time === "Final") 
-      {
-
-      inProcess = true;
-      localTime = game.time;
+    game.time === "2nd Qtr" ||
+    game.time === "Halftime" ||
+    game.time === "3rd Qtr" ||
+    game.time === "4th Qtr" ||
+    game.time === "Final") {
+        
+    inProcess = true;
+    localTime = game.time;
   
   } else {
     inProcess = false;
@@ -50,13 +49,16 @@ const Game:React.FC<Props> = ({game}) => {
       </div>
 
 
-      {inProcess ? 
+      {
+      inProcess ? 
       (
         <div className='inprocess-game-container'>
           <div className='score-container'>
-            <p>{game.homeTeam.score}</p>
+            <p id='homeTeamScore' 
+            className={(Number(game.homeTeam.score) < Number(game.awayTeam.score)) ? "loser-score" : ""}>{game.homeTeam.score}</p>
             <p>:</p>
-            <p>{game.awayTeam.score}</p>
+            <p id='awayTeamScore'
+            className={(Number(game.homeTeam.score) > Number(game.awayTeam.score)) ? "loser-score" : ""}>{game.awayTeam.score}</p>
           </div>
           <p className='game-status'>{localTime}</p>
         </div>
