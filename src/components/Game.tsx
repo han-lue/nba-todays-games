@@ -6,32 +6,35 @@ interface Props {
     game: GameType,
 }
 
-
 const Game:React.FC<Props> = ({game}) => {
 
   let fullDate:string = "";
   let localTime:string = "";
 
-  console.log(game.time);
+  let inProcess: boolean;
 
   if (game.time === "1st Qtr" ||
       game.time === "2nd Qtr" ||
       game.time === "Halftime" ||
       game.time === "3rd Qtr" ||
       game.time === "4th Qtr" ||
-      game.time === "Final") {
-    localTime = game.time;
+      game.time === "Final") 
+      {
+
+      inProcess = true;
+      localTime = game.time;
   
   } else {
+    inProcess = false;
     const gameDate = new Date(game.time); 
 
-    console.log(gameDate) 
+    //console.log(gameDate) 
 
-    fullDate = gameDate.getDate().toString() + "-" + (gameDate.getMonth() + 1).toString() + "-" + gameDate.getFullYear().toString()
-    console.log(fullDate)
+    fullDate = ("0" + gameDate.getDate().toString()).slice(-2) + "-" + ("0" + (gameDate.getMonth() + 1).toString()).slice(-2) + "-" + gameDate.getFullYear().toString()
+    //console.log(fullDate)
 
     localTime = ("0" + gameDate.getHours().toString()).slice(-2) + ":" + ("0" + gameDate.getMinutes().toString()).slice(-2)
-    console.log(localTime)
+    //console.log(localTime)
 
   }
   
@@ -42,21 +45,36 @@ const Game:React.FC<Props> = ({game}) => {
       <div className='team-left-container'>
         <p>{game.homeTeam.name}</p>
         <div className='image-container'>
-          <img src={`./src/assets/logos/${game.homeTeam.abbreviation}.svg`} alt="Home team NBA logo"/>
+          <img src={`./src/assets/logos/${game.homeTeam.abbreviation}.svg`} alt={`NBA team ${game.homeTeam.name}'s logo`}/>
         </div>
       </div>
 
 
-      <div className='date-time-container'>
-        <p className='time-text'>{localTime}</p>
-        <p className='date-text'>{fullDate}</p>
-      </div>
+      {inProcess ? 
+      (
+        <div className='inprocess-game-container'>
+          <div className='score-container'>
+            <p>{game.homeTeam.score}</p>
+            <p>:</p>
+            <p>{game.awayTeam.score}</p>
+          </div>
+          <p className='game-status'>{localTime}</p>
+        </div>
+      ) 
+      :
+      (
+        <div className='date-time-container'>
+          <p className='time-text'>{localTime}</p>
+          <p className='date-text'>{fullDate}</p>
+        </div>
+      )
+      }
 
 
       <div className='team-right-container'>
         <p>{game.awayTeam.name}</p>
         <div className='image-container'>
-          <img src={`./src/assets/logos/${game.awayTeam.abbreviation}.svg`} alt="Away team NBA logo"/>
+          <img src={`./src/assets/logos/${game.awayTeam.abbreviation}.svg`} alt={`NBA team ${game.awayTeam.name}'s logo`}/>
         </div>
       </div>
       
