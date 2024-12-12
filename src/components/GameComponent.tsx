@@ -11,8 +11,9 @@ const Game:React.FC<Props> = ({game}) => {
   let fullDate:string = "";
   let localTime:string = "";
 
-  let inProcess: boolean;
+  let hasStarted: boolean;
 
+  // Check if the game has started and set either current state or start date & time
   if (game.time === "1st Qtr" ||
     game.time === "2nd Qtr" ||
     game.time === "Halftime" ||
@@ -20,16 +21,21 @@ const Game:React.FC<Props> = ({game}) => {
     game.time === "4th Qtr" ||
     game.time === "Final") {
         
-    inProcess = true;
+    hasStarted = true;
     localTime = game.time;
   
   } else {
-    inProcess = false;
+    hasStarted = false;
     const gameDate = new Date(game.time); 
 
-    fullDate = ("0" + gameDate.getDate().toString()).slice(-2) + "-" + ("0" + (gameDate.getMonth() + 1).toString()).slice(-2) + "-" + gameDate.getFullYear().toString()
+    // Format game's date
+    fullDate = ("0" + gameDate.getDate().toString()).slice(-2) + "-" + 
+    ("0" + (gameDate.getMonth() + 1).toString()).slice(-2) + "-" + 
+    gameDate.getFullYear().toString()
 
-    localTime = ("0" + gameDate.getHours().toString()).slice(-2) + ":" + ("0" + gameDate.getMinutes().toString()).slice(-2)
+    // Format game's time
+    localTime = ("0" + gameDate.getHours().toString()).slice(-2) + ":" + 
+    ("0" + gameDate.getMinutes().toString()).slice(-2)
   }
   
 
@@ -44,24 +50,24 @@ const Game:React.FC<Props> = ({game}) => {
       </div>
 
       {
-      inProcess ? 
-      (
-        <div className='game--playing'>
-          <div className='game--playing__scores'>
+      hasStarted ? 
+      ( // Game has started, showing scores instead of time
+        <div className='game--has-started'>
+          <div className='game--has-started__scores'>
             <p id='homeTeamScore' 
-            className={(Number(game.homeTeam.score) < Number(game.awayTeam.score)) ? "game--playing__scores--loser" : ""}>{game.homeTeam.score}</p>
+            className={(Number(game.homeTeam.score) < Number(game.awayTeam.score)) ? "game--has-started__scores--loser" : ""}>{game.homeTeam.score}</p>
             <p>:</p>
             <p id='awayTeamScore'
-            className={(Number(game.homeTeam.score) > Number(game.awayTeam.score)) ? "game--playing__scores--loser" : ""}>{game.awayTeam.score}</p>
+            className={(Number(game.homeTeam.score) > Number(game.awayTeam.score)) ? "game--has-started__scores--loser" : ""}>{game.awayTeam.score}</p>
           </div>
-          <p className='game--playing__status'>{localTime}</p>
+          <p className='game--has-started__status'>{localTime}</p>
         </div>
       ) 
-      :
-      (
-        <div className='game--unplayed__status'>
-          <p className='game--unplayed__status__time'>{localTime}</p>
-          <p className='game--unplayed__status__date'>{fullDate}</p>
+      : 
+      ( // Game hasn't started, showing date and time
+        <div className='game--hasnt-started__status'>
+          <p className='game--hasnt-started__status__time'>{localTime}</p>
+          <p className='game--hasnt-started__status__date'>{fullDate}</p>
         </div>
       )
       }

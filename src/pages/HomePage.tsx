@@ -13,22 +13,18 @@ import customParseFormat from "dayjs/plugin/customParseFormat.js";
 dayjs.extend(customParseFormat);
 
 function Games() {
-  const todaysDate = dayjs();
+  // Get todays date
+  const todaysDate = dayjs(); 
 
-  const [games, setGames] = useState<Array<any> | null>(null)
-  const [selectedDate, setSelectedDate] = useState<Dayjs | null>(todaysDate)
+  const [games, setGames] = useState<Array<any> | null>(null);
+  const [selectedDate, setSelectedDate] = useState<Dayjs | null>(todaysDate);
 
-  const apiGamesUrl = import.meta.env.VITE_API_GAMES_URL
-  const apiKey = import.meta.env.VITE_API_KEY
+  // Get API key and URL from .env file
+  const apiGamesUrl = import.meta.env.VITE_API_GAMES_URL;
+  const apiKey = import.meta.env.VITE_API_KEY;
 
-  
+  // Fetch games of today or the selected date
   useEffect(() => {
-
-    console.log("useEffect is called")
-    console.log(games)
-    console.log(selectedDate)
-
-    // Fetch todays games from the API
     fetch(apiGamesUrl + "/?dates[]=" + selectedDate!.format("YYYY-MM-DD"), {
       method: 'GET',
       headers: { "Authorization" : apiKey }
@@ -37,7 +33,7 @@ function Games() {
     .then(response => setGames(response.data.slice()))
     .catch(error => console.error(error));
      
-  }, [selectedDate])
+  }, [selectedDate]);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -56,42 +52,43 @@ function Games() {
           
           <div className='home-page__container__grid'>
             { 
-
             games === null 
             ? 
+            // If waiting for API response, show loading animation
             <Box sx={{ display: 'flex', justifySelf: "center" }}>
               <CircularProgress />
             </Box>
             : 
-            
-            games.length === 0 
-            ?
-             <p className='home-page__text--no-games'>There are no games today</p>
-            :
+              games.length === 0 
+              ? 
+              // If there's no games on the selected date, show no games text
+              <p className='home-page__text--no-games'>There are no games today</p>
+              : 
+              // If there are games on the selected date, show the games
+              games.map((game: any) => 
+                <Game key={game.id}
 
-            games.map((game: any) => 
-            
-            <Game key={game.id}
-
-            game = {{
-              id: game.id,
-              postSeason: game.postseason,
-              time: game.status,
-              homeTeam: {
-                id: game.home_team.id, 
-                name: game.home_team.name, 
-                abbreviation: game.home_team.abbreviation, 
-                score: game.home_team_score,
-                conference: game.home_team.conference },
-              awayTeam: {
-                id: game.visitor_team.id,
-                name: game.visitor_team.name,
-                abbreviation: game.visitor_team.abbreviation,
-                score: game.visitor_team_score,
-                conference: game.visitor_team.conference,
-              }
-            }} />)
-
+                game = {{
+                  id: game.id,
+                  postSeason: game.postseason,
+                  time: game.status,
+                  homeTeam: {
+                    id: game.home_team.id, 
+                    name: game.home_team.name, 
+                    abbreviation: game.home_team.abbreviation, 
+                    score: game.home_team_score,
+                    conference: game.home_team.conference 
+                  },
+                  awayTeam: {
+                    id: game.visitor_team.id,
+                    name: game.visitor_team.name,
+                    abbreviation: game.visitor_team.abbreviation,
+                    score: game.visitor_team_score,
+                    conference: game.visitor_team.conference,
+                  }
+                }} 
+                />
+              )
             }
           </div>
         </div>

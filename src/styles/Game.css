@@ -30,25 +30,25 @@
     height: 100%;
 }
 
-.game--unplayed__status {
+.game--hasnt-started__status {
     display: flex;
     flex-direction: column;
     align-self: center;
 }
 
-.game--unplayed__status__time{
+.game--hasnt-started__status__time{
     font-size: xx-large;
     font-weight: bolder;
     text-align: center;
 }
 
-.game--unplayed__status__date {
+.game--hasnt-started__status__date {
     font-size: small;
     font-weight: 400;
     text-align: center;
 }
 
-.game--playing {
+.game--has-started {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -58,7 +58,7 @@
     width: 100%;
 }
 
-.game--playing__scores {
+.game--has-started__scores {
     display: flex;
     font-size: xx-large;
     font-weight: bolder;
@@ -67,10 +67,10 @@
     gap: 10px;
 }
 
-.game--playing__scores--loser {
-    color: gray;
+.game--has-started__scores--loser {
+    color: rgb(112, 101, 101);
 }
 
-.game--playing__status {
+.game--has-started__status {
     font-size: large;
 }
