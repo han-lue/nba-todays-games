@@ -45,7 +45,7 @@ const Game:React.FC<Props> = ({game}) => {
       <div className='game__team'>
         <p>{game.homeTeam.name}</p>
         <div className='game__team__image'>
-          <img src={`./src/assets/logos/${game.homeTeam.abbreviation}.svg`} alt={`NBA team ${game.homeTeam.name}'s logo`}/>
+          <img src={`/assets/logos/${game.homeTeam.abbreviation}.svg`} alt={`NBA team ${game.homeTeam.name}'s logo`}/>
         </div>
       </div>
 
@@ -75,7 +75,7 @@ const Game:React.FC<Props> = ({game}) => {
       <div className='game__team'>
         <p>{game.awayTeam.name}</p>
         <div className='game__team__image'>
-          <img src={`./src/assets/logos/${game.awayTeam.abbreviation}.svg`} alt={`NBA team ${game.awayTeam.name}'s logo`}/>
+          <img src={`/assets/logos/${game.awayTeam.abbreviation}.svg`} alt={`NBA team ${game.awayTeam.name}'s logo`}/>
         </div>
       </div>
       
