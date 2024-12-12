@@ -1,8 +1,7 @@
 import { createRoot } from 'react-dom/client'
 
 import { BrowserRouter, Route, Routes } from "react-router";
-import Games from './pages/Games.tsx'
-import TestPage from './pages/TestPage.tsx';
+import HomePage from './pages/HomePage.tsx'
 
 import "./index.css"
 
@@ -10,8 +9,7 @@ createRoot(document.getElementById('root')!).render(
 
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<Games />} />
-            <Route path="/test" element={<TestPage />} />
+            <Route path="/" element={<HomePage />} />
         </Routes>
     </BrowserRouter>
 

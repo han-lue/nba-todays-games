@@ -27,59 +27,51 @@ const Game:React.FC<Props> = ({game}) => {
     inProcess = false;
     const gameDate = new Date(game.time); 
 
-    //console.log(gameDate) 
-
     fullDate = ("0" + gameDate.getDate().toString()).slice(-2) + "-" + ("0" + (gameDate.getMonth() + 1).toString()).slice(-2) + "-" + gameDate.getFullYear().toString()
-    //console.log(fullDate)
 
     localTime = ("0" + gameDate.getHours().toString()).slice(-2) + ":" + ("0" + gameDate.getMinutes().toString()).slice(-2)
-    //console.log(localTime)
-
   }
   
 
   return (
-    <div className='game-container'>  
+    <div className='game'>  
 
-      <div className='team-left-container'>
+      <div className='game__team'>
         <p>{game.homeTeam.name}</p>
-        <div className='image-container'>
+        <div className='game__team__image'>
           <img src={`./src/assets/logos/${game.homeTeam.abbreviation}.svg`} alt={`NBA team ${game.homeTeam.name}'s logo`}/>
         </div>
       </div>
 
-
       {
       inProcess ? 
       (
-        <div className='inprocess-game-container'>
-          <div className='score-container'>
+        <div className='game--playing'>
+          <div className='game--playing__scores'>
             <p id='homeTeamScore' 
-            className={(Number(game.homeTeam.score) < Number(game.awayTeam.score)) ? "loser-score" : ""}>{game.homeTeam.score}</p>
+            className={(Number(game.homeTeam.score) < Number(game.awayTeam.score)) ? "game--playing__scores--loser" : ""}>{game.homeTeam.score}</p>
             <p>:</p>
             <p id='awayTeamScore'
-            className={(Number(game.homeTeam.score) > Number(game.awayTeam.score)) ? "loser-score" : ""}>{game.awayTeam.score}</p>
+            className={(Number(game.homeTeam.score) > Number(game.awayTeam.score)) ? "game--playing__scores--loser" : ""}>{game.awayTeam.score}</p>
           </div>
-          <p className='game-status'>{localTime}</p>
+          <p className='game--playing__status'>{localTime}</p>
         </div>
       ) 
       :
       (
-        <div className='date-time-container'>
-          <p className='time-text'>{localTime}</p>
-          <p className='date-text'>{fullDate}</p>
+        <div className='game--unplayed__status'>
+          <p className='game--unplayed__status__time'>{localTime}</p>
+          <p className='game--unplayed__status__date'>{fullDate}</p>
         </div>
       )
       }
 
-
-      <div className='team-right-container'>
+      <div className='game__team'>
         <p>{game.awayTeam.name}</p>
-        <div className='image-container'>
+        <div className='game__team__image'>
           <img src={`./src/assets/logos/${game.awayTeam.abbreviation}.svg`} alt={`NBA team ${game.awayTeam.name}'s logo`}/>
         </div>
       </div>
-      
       
     </div>
   )

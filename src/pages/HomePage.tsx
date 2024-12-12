@@ -2,21 +2,18 @@ import { useEffect, useState } from 'react'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+
+import Game from "../components/GameComponent"
+import '../styles/HomePage.css'
+
 import dayjs, { Dayjs } from 'dayjs'
 import customParseFormat from "dayjs/plugin/customParseFormat.js";
 dayjs.extend(customParseFormat);
 
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
-
-
-import '../styles/Games.css'
-
-import Game from "../components/Game"
-
 function Games() {
   const todaysDate = dayjs();
-  //console.log(todaysDate.format('YYYY-MM-DD') )
 
   const [games, setGames] = useState<Array<any> | null>(null)
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(todaysDate)
@@ -24,23 +21,7 @@ function Games() {
   const apiGamesUrl = import.meta.env.VITE_API_GAMES_URL
   const apiKey = import.meta.env.VITE_API_KEY
 
-  /*
-  useEffect(() => {
-    const date: Date = new Date() // Get todays date
-    const todaysDate = date.toISOString().split('T')[0] // Convert the date into YYY-MM-DD format
-
-    // Fetch todays games from the API
-    fetch(apiGamesUrl + "/?dates[]=" + todaysDate, {
-      method: 'GET',
-      headers: { "Authorization" : apiKey }
-    })
-    .then(response => response.json())
-    .then(response => setGames(response.data. slice()))
-    .catch(error => console.error(error));
-     
-  }, []) */
-
-  //test with random date
+  
   useEffect(() => {
 
     console.log("useEffect is called")
@@ -58,15 +39,10 @@ function Games() {
      
   }, [selectedDate])
 
-  //console.log(games)
-  //console.log(selectedDate)
-
-  console.log(games)
-
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <div className='main-container'> 
-        <div className='container'>
+      <div className='home-page'> 
+        <div className='home-page__container'>
 
           <div >
             <DatePicker 
@@ -78,7 +54,7 @@ function Games() {
             />  
           </div> 
           
-          <div className='grid-container'>
+          <div className='home-page__container__grid'>
             { 
 
             games === null 
@@ -90,9 +66,8 @@ function Games() {
             
             games.length === 0 
             ?
-             <p className='no-games-text'>There are no games today</p>
+             <p className='home-page__text--no-games'>There are no games today</p>
             :
-
 
             games.map((game: any) => 
             

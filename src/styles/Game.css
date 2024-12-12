@@ -1,4 +1,4 @@
-.game-container {
+.game {
     display: grid;
     height: 100px;
     grid-template-columns: 1fr auto 1fr;
@@ -11,7 +11,7 @@
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
-.team-left-container {
+.game__team {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,50 +21,34 @@
     font-weight: bold;
 }
 
-.team-right-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    gap: 5px;
-    font-size: large;
-    font-weight: bold;
-}
-
-.image-container {
+.game__team__image {
     height: 60px;
     aspect-ratio: 1/1;
 }
 
-.image-container img {
+.game__team__image img {
     height: 100%;
 }
 
-.date-time-container {
+.game--unplayed__status {
     display: flex;
     flex-direction: column;
     align-self: center;
 }
 
-.time-text {
+.game--unplayed__status__time{
     font-size: xx-large;
     font-weight: bolder;
     text-align: center;
 }
 
-.date-text {
+.game--unplayed__status__date {
     font-size: small;
     font-weight: 400;
     text-align: center;
 }
 
-.teams-info-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.inprocess-game-container {
+.game--playing {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -74,7 +58,7 @@
     width: 100%;
 }
 
-.score-container {
+.game--playing__scores {
     display: flex;
     font-size: xx-large;
     font-weight: bolder;
@@ -83,13 +67,10 @@
     gap: 10px;
 }
 
-.winner-score {
+.game--playing__scores--loser {
+    color: gray;
 }
 
-.loser-score {
-    font-weight: lighter;
-}
-
-.game-status {
+.game--playing__status {
     font-size: large;
 }
