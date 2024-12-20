@@ -1,41 +1,41 @@
 body {
-    margin: 0;
-    overflow-x: hidden;
+	margin: 0;
+	overflow-x: hidden;
 }
 
 p {
-    margin: 0;
+	margin: 0;
 }
 
 .home-page {
-    width: 100vw;
-    max-width: 100%;
-    min-height: 100vh;
-    background-color: #e3e2e2
+	width: 100vw;
+	max-width: 100%;
+	min-height: 100vh;
+	background-color: #e3e2e2;
 }
 
 .home-page__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    padding: 50px 30px 30px 30px;
-    gap: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+	padding: 50px 30px 30px 30px;
+	gap: 50px;
 }
 
 .home-page__container__grid {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    grid-auto-rows: 1fr;
-    grid-gap: 10px;
-    justify-content: center;
-    align-content: center;
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+	grid-auto-rows: 1fr;
+	grid-gap: 10px;
+	justify-content: center;
+	align-content: center;
 }
 
 .home-page__text--no-games {
-    font-size: xx-large;
-    text-align: center;
-    font-weight: bolder;
+	font-size: xx-large;
+	text-align: center;
+	font-weight: bolder;
 }
