@@ -36,6 +36,7 @@
 	display: flex;
 	flex-direction: column;
 	align-self: center;
+	gap: 10px;
 }
 
 .game--hasnt-started__status__time {
@@ -45,15 +46,14 @@
 }
 
 .game--hasnt-started__status__date {
-	font-size: small;
+	font-size: medium;
 	font-weight: 400;
-	text-align: center;
 }
 
 .game--has-started {
 	display: flex;
 	flex-direction: column;
-	gap: 5px;
+	gap: 10px;
 	align-self: center;
 	align-items: center;
 	justify-content: center;
@@ -74,5 +74,6 @@
 }
 
 .game--has-started__status {
-	font-size: large;
+	font-size: medium;
+	font-weight: 400;
 }
