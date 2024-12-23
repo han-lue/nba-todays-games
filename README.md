@@ -1,50 +1,24 @@
-# React + TypeScript + Vite
+# NBA Games of the Day
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## About the project
 
-Currently, two official plugins are available:
+One can use nba.com or NBA's mobile app to check the list of games on any date. However, the website and specifically the mobile app often take a while to load due to how much other information and services they contain. This can be annoying for a user who only wants to check the list of games, which is why NBA Games of the Day was developed.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[nbagamesoftheday.vercel.app](https://nbagamesoftheday.vercel.app/) only shows the list of NBA games on the date selected by the user and nothing else. If a game hasn't started, it shows the time it will start in users timezone. And, if a game has started, it shows the scores instead.
 
-## Expanding the ESLint configuration
+## Where does the data come from?
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+To retrieve data about the games, a third party API called [Ball Dont Lie](https://www.balldontlie.io/) is being used.
 
-- Configure the top-level `parserOptions` property like this:
+## How to locally run
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+If you'd like to locally run the website you need to use your own API key, which requires you to follow the steps below
+
+1. Go to https://www.balldontlie.io/, create an account for free and get an API key.
+2. Create a .env file in the project directory
+3. Add the following lines in the .env file (don't forget to replace the example API key with your own key)
+
 ```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+VITE_API_KEY = d3sd2ff4gf71-3ghjfs34-1n13-81fg-18d48a34asc
+VITE_API_GAMES_URL = https://api.balldontlie.io/v1/games
 ```
