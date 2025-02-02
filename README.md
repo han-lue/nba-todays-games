@@ -10,7 +10,7 @@ One can use nba.com or NBA's mobile app to check the list of games on any date. 
 
 To retrieve data about the games, a third party API called [Ball Dont Lie](https://www.balldontlie.io/) is being used.
 
-## How to locally run
+## How to run locally
 
 If you'd like to locally run the website you need to use your own API key, which requires you to follow the steps below
 

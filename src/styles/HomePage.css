@@ -28,7 +28,6 @@ p {
 	height: 100%;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-	grid-auto-rows: 1fr;
 	grid-gap: 10px;
 	justify-content: center;
 	align-content: center;
