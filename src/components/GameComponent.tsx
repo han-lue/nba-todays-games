@@ -2,11 +2,13 @@ import { GameType } from "../types/Game.type";
 
 import "../styles/Game.css";
 
+
 interface Props {
 	game: GameType;
+	hideScores: boolean;
 }
 
-const Game: React.FC<Props> = ({ game }) => {
+const Game: React.FC<Props> = ({ game, hideScores }) => {
 	let fullDate: string = "";
 	let localTime: string = "";
 
@@ -61,23 +63,23 @@ const Game: React.FC<Props> = ({ game }) => {
 						<p
 							id="homeTeamScore"
 							className={
-								Number(game.homeTeam.score) < Number(game.awayTeam.score)
+								hideScores || Number(game.homeTeam.score) < Number(game.awayTeam.score)
 									? "game--has-started__scores--loser"
 									: ""
 							}
 						>
-							{game.homeTeam.score}
+							{hideScores ? "---" : game.homeTeam.score}
 						</p>
 						<p>:</p>
 						<p
 							id="awayTeamScore"
 							className={
-								Number(game.homeTeam.score) > Number(game.awayTeam.score)
+								hideScores || Number(game.homeTeam.score) > Number(game.awayTeam.score)
 									? "game--has-started__scores--loser"
 									: ""
 							}
 						>
-							{game.awayTeam.score}
+							{hideScores ? "---" : game.awayTeam.score}
 						</p>
 					</div>
 					<p className="game--has-started__status">{localTime}</p>

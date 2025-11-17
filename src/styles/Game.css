@@ -8,9 +8,7 @@
 	padding: 15px;
 	justify-content: space-between;
 	justify-items: center;
-	box-shadow:
-		0 2px 4px 0 rgba(0, 0, 0, 0.2),
-		0 3px 10px 0 rgba(0, 0, 0, 0.19);
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .game__team {
@@ -67,6 +65,11 @@
 	flex-direction: row;
 	justify-content: space-between;
 	gap: 10px;
+}
+
+.game--has-started__scores p {
+	width: 45px;
+	text-align: center;
 }
 
 .game--has-started__scores--loser {
