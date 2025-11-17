@@ -11,7 +11,7 @@ p {
 	width: 100vw;
 	max-width: 100%;
 	min-height: 100vh;
-	background-color: #efefef;
+	background-color: #fafafa;
 }
 
 .home-page__container {
@@ -21,6 +21,20 @@ p {
 	align-items: center;
 	padding: 50px 30px 30px 30px;
 	gap: 50px;
+}
+
+.controls {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+}
+
+@media (min-width: 768px) {
+	.controls {
+		flex-direction: row;
+		justify-content: center;
+	}
 }
 
 .home-page__container__grid {
@@ -41,13 +55,41 @@ p {
 }
 
 .toggle-scores-text {
-  color: #000000;       /* blue text, adjust as needed */
-  cursor: pointer;      /* shows pointer on hover */
-  text-decoration: underline; /* optional, makes it look clickable */
-  font-size: 1.5rem;
-  transition: color 0.2s ease;
+	color: #000000;
+	/* blue text, adjust as needed */
+	cursor: pointer;
+	/* shows pointer on hover */
+	text-decoration: underline;
+	/* optional, makes it look clickable */
+	font-size: 1.5rem;
+	transition: color 0.2s ease;
 }
 
 .toggle-scores-text:hover {
-  color: #115293;       /* darker blue on hover */
+	color: #115293;
+	/* darker blue on hover */
+}
+
+@media (max-width: 500px) {
+	.home-page__container__grid {
+		grid-template-columns: repeat(auto-fit, minmax(350px, 450px));
+	}
+
+	.home-page__container {
+
+		padding: 50px 20px 20px 20px;
+	}
+}
+
+@media (max-width: 1000px) {
+	.home-page__container__grid {
+
+		grid-template-columns: repeat(auto-fit, minmax(350px, 380px));
+
+	}
+
+	.home-page__container {
+
+		padding: 50px 20px 20px 20px;
+	}
 }

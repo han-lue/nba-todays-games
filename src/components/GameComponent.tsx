@@ -70,7 +70,7 @@ const Game: React.FC<Props> = ({ game, hideScores }) => {
 						>
 							{hideScores ? "---" : game.homeTeam.score}
 						</p>
-						<p>:</p>
+						<p className="divider">:</p>
 						<p
 							id="awayTeamScore"
 							className={

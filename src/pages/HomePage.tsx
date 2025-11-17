@@ -4,8 +4,6 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
 
 import Game from "../components/GameComponent";
 import "../styles/HomePage.css";
@@ -20,7 +18,6 @@ function Games() {
 
 	const [games, setGames] = useState<Array<any> | null>(null);
 	const [selectedDate, setSelectedDate] = useState<Dayjs | null>(todaysDate);
-	const [hideScores, setHideScores] = useState<boolean>(true);
 
 	// Get API key and URL from .env file
 	const apiGamesUrl = import.meta.env.VITE_API_GAMES_URL;
@@ -41,47 +38,38 @@ function Games() {
 		<LocalizationProvider dateAdapter={AdapterDayjs}>
 			<div className="home-page">
 				<div className="home-page__container">
-					<div>
+					<div className="controls">
 						<DatePicker
 							label="Date"
 							value={selectedDate}
 							onAccept={(newDate) => setSelectedDate(newDate)} // onAccept is fired whenever the date is fully selected,
 							//in contrast to onChange, which is fired even when you change month or year.
 							views={["year", "month", "day"]}
-						/>
-
-						<FormControlLabel
-							control={
-								<Switch
-									checked={!hideScores}
-									onChange={() => setHideScores(!hideScores)}
-									size="medium"
-									sx={{
-										transform: 'scale(1.3)',
-										'& .MuiSwitch-switchBase.Mui-checked': {
-											color: '#1976d2',
-											'& + .MuiSwitch-track': {
-												backgroundColor: '#1976d2',
-											},
-										},
-										'& .MuiSwitch-track': {
-											backgroundColor: '#ccc',
-										},
-									}}
-								/>
-							}
-							label="Show Scores"
-							labelPlacement="start"
 							sx={{
-								fontFamily: '"Lato", sans-serif',
-								fontSize: '1.3rem',
-								'& .MuiFormControlLabel-label': {
-									fontFamily: '"Lato", sans-serif',
-									fontSize: '1.3rem',
-									marginRight: '10px',
+								'& .MuiOutlinedInput-root': {
+									'& fieldset': {
+										borderColor: '#a0a0a0',
+									},
+									'&.Mui-focused fieldset': {
+										borderColor: '#000000',
+									},
+								},
+								'& .MuiInputLabel-root.Mui-focused': {
+									color: '#000000',
+								},
+							}}
+							slotProps={{
+								popper: {
+									sx: {
+										'& .MuiPickersDay-root.Mui-selected': {
+											backgroundColor: '#000000 !important',
+											color: '#ffffff !important',
+										},
+									},
 								},
 							}}
 						/>
+
 					</div>
 
 					<div className="home-page__container__grid">
@@ -119,7 +107,7 @@ function Games() {
 											conference: game.visitor_team.conference,
 										},
 									}}
-									hideScores={hideScores} 
+									hideScores={false} 
 								/>
 							))
 						)}
